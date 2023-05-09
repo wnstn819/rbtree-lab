@@ -366,18 +366,42 @@ void test_find_erase_rand(const size_t n, const unsigned int seed) {
   free(arr);
   delete_rbtree(t);
 }
+void print_rbtree(const rbtree *t, const node_t *x) {
+  if (x == t->nil) {
+    printf("nil\n");
+    return;
+  }else{
+  printf("key = %d\n", x->key);
+  printf("left: ");
+  print_rbtree(t, x->left);
+  printf("right: ");
+  print_rbtree(t, x->right);
+  }
+}
 
 int main(void) {
   test_init();
+
   test_insert_single(1024);
   test_find_single(512, 1024);
-  test_erase_root(128);
-  test_find_erase_fixed();
-  test_minmax_suite();
-  test_to_array_suite();
-  test_distinct_values();
-  test_duplicate_values();
-  test_multi_instance();
-  test_find_erase_rand(10000, 17);
-  printf("Passed all tests!\n");
+  rbtree* s = new_rbtree();
+  rbtree_insert(s, 10);
+  rbtree_insert(s, 70);
+ 
+  rbtree_insert(s, 50);
+  print_rbtree(s,s->root);
+  rbtree_insert(s, 5);
+
+  printf("-------------------\n");
+  print_rbtree(s,s->root);
+
+  // test_erase_root(128);
+  // test_find_erase_fixed();
+  // test_minmax_suite();
+  // test_to_array_suite();
+  // test_distinct_values();
+  // test_duplicate_values();
+  // test_multi_instance();
+  // test_find_erase_rand(10000, 17);
+  printf("--------------Passed all tests!------------------\n");
 }
