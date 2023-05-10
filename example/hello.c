@@ -26,6 +26,7 @@ int main(){
 
     }
     printf(" = %d\n", sum);
+    printf(" = %d\n", sum);
     free(p_num_list);
 
 
