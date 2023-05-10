@@ -388,32 +388,12 @@ void inorder_tree_work(rbtree *t, node_t *x) {
 
 int main(void) {
   test_init();
-
   test_insert_single(1024);
   test_find_single(512, 1024);
-  rbtree* s = new_rbtree();
-  rbtree_insert(s, 10);
-  rbtree_insert(s, 70);
- 
-  rbtree_insert(s, 50);
-  
-  print_rbtree(s,s->root);
-  node_t* p = rbtree_insert(s, 5);
-
-  printf("-------------------\n");
-
-  print_rbtree(s,s->root);
-
-  rbtree_erase(s, p);
-
-  printf("-------------------\n");
-  print_rbtree(s,s->root);
-
   test_erase_root(128);
   test_find_erase_fixed();
   test_minmax_suite();
   test_to_array_suite();
-  inorder_tree_work(s,s->root);
   test_distinct_values();
   test_duplicate_values();
   test_multi_instance();

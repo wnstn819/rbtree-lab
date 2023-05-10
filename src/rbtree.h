@@ -30,7 +30,6 @@ void inorder_rbtree_to_array(const rbtree *, node_t *, key_t *, int *, const siz
 void inorder_tree_work(rbtree *, node_t *);
 node_t *rbtree_insert(rbtree *, const key_t);
 node_t *rbtree_find(const rbtree *, const key_t);
-node_t *tree_minimum(const rbtree *, node_t *);
 node_t *rbtree_min(const rbtree *);
 node_t *rbtree_max(const rbtree *);
 int rbtree_erase(rbtree *, node_t *);

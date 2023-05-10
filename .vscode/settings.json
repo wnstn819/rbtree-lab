@@ -1,7 +1,8 @@
 {
     "files.associations": {
         "stdlib.h": "c",
-        "rbtree.h": "c"
+        "rbtree.h": "c",
+        "stddef.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
