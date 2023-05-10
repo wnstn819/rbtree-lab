@@ -371,11 +371,18 @@ void print_rbtree(const rbtree *t, const node_t *x) {
     printf("nil\n");
     return;
   }else{
-  printf("key = %d\n", x->key);
+  printf("key = %d , color = %d\n ", x->key,x->color );
   printf("left: ");
   print_rbtree(t, x->left);
   printf("right: ");
   print_rbtree(t, x->right);
+  }
+}
+void inorder_tree_work(rbtree *t, node_t *x) {
+  if (x != t->nil) {
+    inorder_tree_work(t, x->left);
+    printf("색깔 : %d, 키 값 : %d\n", x->color, x->key);
+    inorder_tree_work(t, x->right);
   }
 }
 
@@ -389,19 +396,27 @@ int main(void) {
   rbtree_insert(s, 70);
  
   rbtree_insert(s, 50);
+  
   print_rbtree(s,s->root);
-  rbtree_insert(s, 5);
+  node_t* p = rbtree_insert(s, 5);
+
+  printf("-------------------\n");
+
+  print_rbtree(s,s->root);
+
+  rbtree_erase(s, p);
 
   printf("-------------------\n");
   print_rbtree(s,s->root);
 
-  // test_erase_root(128);
-  // test_find_erase_fixed();
-  // test_minmax_suite();
-  // test_to_array_suite();
-  // test_distinct_values();
-  // test_duplicate_values();
-  // test_multi_instance();
-  // test_find_erase_rand(10000, 17);
+  test_erase_root(128);
+  test_find_erase_fixed();
+  test_minmax_suite();
+  test_to_array_suite();
+  inorder_tree_work(s,s->root);
+  test_distinct_values();
+  test_duplicate_values();
+  test_multi_instance();
+  test_find_erase_rand(10000, 17);
   printf("--------------Passed all tests!------------------\n");
 }
